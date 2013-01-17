@@ -56,7 +56,8 @@ public class VFormSender extends Widget implements Paintable {
     private FormElement createFormElement(UIDL uidl) {
         FormElement fe = Document.get().createFormElement();
         fe.setMethod(uidl.getStringAttribute("method"));
-        fe.setAction(uidl.getStringAttribute("target"));
+        fe.setAction(uidl.getStringAttribute("action"));
+        fe.setTarget(uidl.getStringAttribute("target"));
 
         for (String name : uidl.getChildUIDL(0).getAttributeNames()) {
             InputElement inputElement = Document.get()

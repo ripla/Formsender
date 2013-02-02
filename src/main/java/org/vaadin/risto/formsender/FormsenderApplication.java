@@ -2,17 +2,8 @@ package org.vaadin.risto.formsender;
 
 import java.util.Map;
 
-import com.vaadin.Application;
-import com.vaadin.data.Property;
-import com.vaadin.data.Property.ValueChangeEvent;
-import com.vaadin.terminal.ParameterHandler;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.LoginForm;
-import com.vaadin.ui.NativeSelect;
-import com.vaadin.ui.Panel;
-import com.vaadin.ui.Window;
-import com.vaadin.ui.LoginForm.LoginEvent;
-import com.vaadin.ui.LoginForm.LoginListener;
+import com.apple.eawt.Application;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
 
 public class FormsenderApplication extends Application implements
         ParameterHandler {
@@ -39,10 +30,10 @@ public class FormsenderApplication extends Application implements
             private static final long serialVersionUID = -7672714513229340441L;
 
             public void onLogin(LoginEvent event) {
-                formSender.addValue("name", (String) event
-                        .getLoginParameter("username"));
-                formSender.addValue("password", event
-                        .getLoginParameter("password"));
+                formSender.addValue("name",
+                        (String) event.getLoginParameter("username"));
+                formSender.addValue("password",
+                        event.getLoginParameter("password"));
 
                 formSender.submit();
             }
@@ -51,8 +42,8 @@ public class FormsenderApplication extends Application implements
         NativeSelect select = new NativeSelect("Choose submit target");
         select.setNullSelectionAllowed(false);
         select.addContainerProperty("caption", String.class, "");
-        select.addItem("").getItemProperty("caption").setValue(
-                "This application");
+        select.addItem("").getItemProperty("caption")
+                .setValue("This application");
         select.addItem("printparameters.jsp").getItemProperty("caption")
                 .setValue("JSP page");
         select.setItemCaptionPropertyId("caption");
@@ -61,7 +52,7 @@ public class FormsenderApplication extends Application implements
             private static final long serialVersionUID = -488987561395827034L;
 
             public void valueChange(ValueChangeEvent event) {
-                formSender.setFormTarget((String) event.getProperty()
+                formSender.setFormAction((String) event.getProperty()
                         .getValue());
             }
         });

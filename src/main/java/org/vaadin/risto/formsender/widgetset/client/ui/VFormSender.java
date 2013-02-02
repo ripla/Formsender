@@ -1,12 +1,11 @@
 package org.vaadin.risto.formsender.widgetset.client.ui;
 
+import quicktime.app.image.Paintable;
+
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.FormElement;
 import com.google.gwt.dom.client.InputElement;
 import com.google.gwt.user.client.ui.Widget;
-import com.vaadin.terminal.gwt.client.ApplicationConnection;
-import com.vaadin.terminal.gwt.client.Paintable;
-import com.vaadin.terminal.gwt.client.UIDL;
 
 public class VFormSender extends Widget implements Paintable {
 
@@ -56,7 +55,8 @@ public class VFormSender extends Widget implements Paintable {
     private FormElement createFormElement(UIDL uidl) {
         FormElement fe = Document.get().createFormElement();
         fe.setMethod(uidl.getStringAttribute("method"));
-        fe.setAction(uidl.getStringAttribute("target"));
+        fe.setTarget(uidl.getStringAttribute("target"));
+        fe.setAction(uidl.getStringAttribute("action"));
 
         for (String name : uidl.getChildUIDL(0).getAttributeNames()) {
             InputElement inputElement = Document.get()

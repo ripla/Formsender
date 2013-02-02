@@ -2,10 +2,6 @@ package org.vaadin.risto.formsender;
 
 import java.util.HashMap;
 
-import com.vaadin.terminal.PaintException;
-import com.vaadin.terminal.PaintTarget;
-import com.vaadin.ui.AbstractComponent;
-
 /**
  * Component that allows submitting post or get requests from a vaadin
  * application. Submitting a form with this component will redirect the user
@@ -37,6 +33,8 @@ public class FormSender extends AbstractComponent {
 
     private String formTarget;
 
+    private String formAction;
+
     public FormSender() {
         this(Method.POST);
     }
@@ -54,6 +52,7 @@ public class FormSender extends AbstractComponent {
             target.addAttribute("submit", true);
             target.addAttribute("target", formTarget.toString());
             target.addAttribute("method", formMethod.toString());
+            target.addAttribute("action", getFormAction().toString());
             target.startTag("values");
             for (String name : values.keySet()) {
                 target.addAttribute(name, values.get(name));
@@ -121,5 +120,13 @@ public class FormSender extends AbstractComponent {
 
     public String getFormTarget() {
         return formTarget;
+    }
+
+    public String getFormAction() {
+        return formAction;
+    }
+
+    public void setFormAction(String formAction) {
+        this.formAction = formAction;
     }
 }

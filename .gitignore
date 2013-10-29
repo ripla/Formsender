@@ -1,8 +1,7 @@
 .classpath
 .project
 .settings
-VAADIN
-/target
-/build
 .gradle
 build
+widgetsets
+gwt-unitcache

@@ -4,3 +4,5 @@
 VAADIN
 /target
 /build
+.gradle
+build

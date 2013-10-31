@@ -48,10 +48,10 @@ public class FormSenderDemoUI extends UI {
         // TODO fix for V7
         // select.addItem("app").getItemProperty("caption")
         // .setValue("This application");
-        select.addItem("/printparameters.jsp").getItemProperty("caption")
+        select.addItem("printparameters.jsp").getItemProperty("caption")
                 .setValue("JSP page");
         select.setItemCaptionPropertyId("caption");
-        select.select("/printparameters.jsp");
+        select.select("printparameters.jsp");
 
         panelContent.addComponent(login);
         panelContent.addComponent(select);

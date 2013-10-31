@@ -5,3 +5,5 @@
 build
 widgetsets
 gwt-unitcache
+target
+.gradletasknamecache

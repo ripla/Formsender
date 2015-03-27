@@ -1,11 +1,8 @@
 .classpath
 .project
 .settings
-.gradle
-build
 widgetsets
 gwt-unitcache
 target
-.gradletasknamecache
 *.iml
 .idea/

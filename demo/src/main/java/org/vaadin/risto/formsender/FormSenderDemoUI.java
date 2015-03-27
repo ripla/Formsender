@@ -1,5 +1,7 @@
 package org.vaadin.risto.formsender;
 
+import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.VaadinServlet;
 import org.vaadin.risto.formsender.widgetset.client.shared.Method;
 
 import com.google.gwt.thirdparty.guava.common.base.Strings;
@@ -13,6 +15,9 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
 
 public class FormSenderDemoUI extends UI {
 
@@ -79,5 +84,19 @@ public class FormSenderDemoUI extends UI {
                         .submit();
             }
         });
+    }
+
+    @WebServlet(
+            urlPatterns = {
+                    "/app/*",
+                    "/VAADIN/*"
+            }
+    )
+    @VaadinServletConfiguration(
+            productionMode = false,
+            ui = FormSenderDemoUI.class,
+            widgetset = "org.vaadin.risto.formsender.widgetset.FormSenderDemoWidgetset"
+    )
+    public static class Servlet extends VaadinServlet {
     }
 }

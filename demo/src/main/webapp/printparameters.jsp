@@ -9,6 +9,7 @@
 <title>Parameter printing page</title>
 </head>
 <body>
+<h1>Parameters</h1>
 <% 
 Enumeration paramNames = request.getParameterNames();
 while(paramNames.hasMoreElements()) {

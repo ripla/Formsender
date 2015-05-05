@@ -16,7 +16,6 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 
-import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 
 public class FormSenderDemoUI extends UI {

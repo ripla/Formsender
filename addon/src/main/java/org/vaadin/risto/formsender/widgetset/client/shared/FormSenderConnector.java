@@ -8,7 +8,7 @@ import org.vaadin.risto.formsender.FormSender;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.FormElement;
 import com.google.gwt.dom.client.InputElement;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.dom.client.Element;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ServerConnector;
 import com.vaadin.client.extensions.AbstractExtensionConnector;

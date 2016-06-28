@@ -1,33 +1,31 @@
+allprojects {
+	apply plugin: "eclipse-wtp"
+	apply plugin: "idea"
+}
+
 //common for both projects
 subprojects {
-	repositories {
-    	mavenCentral()
-	}
-	
 	ext.baseNameUpper = project.parent.name.capitalize()
 	ext.baseNameLower = project.parent.name.toLowerCase()
-	
+
 	apply plugin: "java"
 
 	apply from: "http://plugins.jasoft.fi/vaadin.plugin"
 
-	apply plugin: "eclipse-wtp"
-	apply plugin: "idea"
+	vaadin.version="7.6.6"
 
-	vaadin.jvmArgs=["-Xmx1024m"]
-	vaadin.gwt.jvmArgs=["-Xmx1024m"]
-	vaadin.gwt.draftCompile = true
-	vaadin.gwt.strict = true
-	vaadin.manageWidgetset = false
-	
-	vaadin.plugin.logToConsole = true
+	vaadinCompile.draftCompile = true
+	vaadinCompile.strict = true
+	vaadinCompile.manageWidgetset = false
+	vaadin.logToConsole = true
+
 	vaadin.addon.author = "Risto Yrjänä / Vaadin"
 	vaadin.addon.license = "Apache License 2.0"
 	vaadin.addon.title = baseNameUpper
-	
-	sourceCompatibility = "1.6"
-	targetCompatibility = "1.6"
-	
+
+	sourceCompatibility = "1.7"
+	targetCompatibility = "1.7"
+
 	group = "org.vaadin.risto.${baseNameLower}"
 
 	//creates archives named "name-version.jar" and "name.war" where name is the name of the main project
@@ -36,20 +34,20 @@ subprojects {
 
 //addon project, only creates the Directory-compatible JAR
 project(":addon") {
-	
 	eclipse.project.name = "${baseNameUpper}-addon"
 
-	version = "2.1.0"
-	vaadin.widgetset = "${group}.widgetset.${baseNameUpper}Widgetset"
+	version = "2.3.0"
+	//vaadin.widgetset = "${group}.Widgetset"
 
 	dependencies {
+		compile "org.eclipse.jetty:jetty-jsp:9.3.0.M1"
 		testCompile "junit:junit:latest.release"
 	}
 
 	jar {
 		from sourceSets.main.allJava //include sources
 	}
-		
+
 	war.enabled = false //war plugin applied by the Vaadin plugin, not needed here
 }
 
@@ -57,13 +55,14 @@ project(":addon") {
 project(":demo") {
 
 	eclipse.project.name = "${baseNameUpper}-demo"
-	
+
 	dependencies {
 		compile project(":addon")
 		compile "com.google.guava:guava:latest.release"
 	}
 
-	vaadin.widgetset = "${group}.widgetset.${baseNameUpper}DemoWidgetset"
+	vaadinSuperDevMode.openInBrowser = false
+	vaadinRun.openInBrowser = false
 }
 
 task(dist, type: Sync, dependsOn: [':addon:jar', ':demo:war']) {

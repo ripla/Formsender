@@ -1,21 +1,20 @@
 package org.vaadin.risto.formsender;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.vaadin.risto.formsender.widgetset.client.shared.FormControl;
-import org.vaadin.risto.formsender.widgetset.client.shared.Method;
-
 import com.vaadin.server.AbstractExtension;
 import com.vaadin.ui.UI;
+import org.vaadin.risto.formsender.client.shared.FormRpc;
+import org.vaadin.risto.formsender.client.shared.Method;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Component that allows submitting post or get requests from a Vaadin
  * application. Submitting a form with this component will redirect the user
  * away from the current application.
- * 
+ *
  * @author Risto Yrjänä / Vaadin }>
- * 
+ *
  */
 public class FormSender extends AbstractExtension {
 
@@ -46,13 +45,13 @@ public class FormSender extends AbstractExtension {
      * Submit the form with the current values, target, action and method.
      */
     public void submit() {
-        getRpcProxy(FormControl.class).send(formMethod, values, formTarget,
+        getRpcProxy(FormRpc.class).send(formMethod, values, formTarget,
                 formAction);
     }
 
     /**
      * Set the method to be used when submitting the form.
-     * 
+     *
      * @param formMethod
      */
     public void setFormMethod(Method formMethod) {
@@ -65,7 +64,7 @@ public class FormSender extends AbstractExtension {
 
     /**
      * Set the name / value pairs to use when submitting the form.
-     * 
+     *
      * @param values
      *            the values to set
      */
@@ -79,7 +78,7 @@ public class FormSender extends AbstractExtension {
 
     /**
      * Add a name / value pair.
-     * 
+     *
      * @param name
      * @param value
      */
@@ -89,7 +88,7 @@ public class FormSender extends AbstractExtension {
 
     /**
      * Set the submit target. E.g. "_blank".
-     * 
+     *
      * @param formTarget
      */
     public void setFormTarget(String formTarget) {
@@ -107,7 +106,7 @@ public class FormSender extends AbstractExtension {
     /**
      * Set the action of the form. This can be a full valid URL or a part of it
      * relative to the current application.
-     * 
+     *
      * @param formAction
      */
     public void setFormAction(String formAction) {

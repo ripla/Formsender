@@ -1,20 +1,32 @@
 package org.vaadin.risto.formsender;
 
+import com.vaadin.ui.UI;
+import org.vaadin.risto.formsender.client.shared.Method;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.vaadin.risto.formsender.widgetset.client.shared.Method;
-
-import com.vaadin.ui.UI;
-
+/**
+ * Builder for constructing a {@link FormSender} more easily.
+ *
+ * @author Risto Yrjänä / Vaadin }>
+ */
 public class FormSenderBuilder {
 
+    /**
+     * Create a new builder instance. Set the values with the {code}with*{code}
+     * methods, and call {@link #submit()} to send the request.
+     *
+     * @return
+     */
     public static FormSenderBuilder create() {
         return new FormSenderBuilder();
     }
 
+    /**
+     * Use {@link #create()} instead
+     */
     protected FormSenderBuilder() {
-        // use FormSenderBuilder.create()
     }
 
     private Method method;

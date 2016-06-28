@@ -1,9 +1,4 @@
-package org.vaadin.risto.formsender.widgetset.client.shared;
-
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.vaadin.risto.formsender.FormSender;
+package org.vaadin.risto.formsender.client.shared;
 
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.FormElement;
@@ -13,13 +8,17 @@ import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ServerConnector;
 import com.vaadin.client.extensions.AbstractExtensionConnector;
 import com.vaadin.shared.ui.Connect;
+import org.vaadin.risto.formsender.FormSender;
+
+import java.util.Map;
+import java.util.Map.Entry;
 
 @Connect(FormSender.class)
 public class FormSenderConnector extends AbstractExtensionConnector {
 
     private static final long serialVersionUID = 5721950329134512038L;
     private Element targetElement;
-    private final FormControl formControlRpc = new FormControl() {
+    private final FormRpc formRpc = new FormRpc() {
 
         private static final long serialVersionUID = -6376909637382144413L;
 
@@ -34,12 +33,12 @@ public class FormSenderConnector extends AbstractExtensionConnector {
     protected void init() {
         super.init();
 
-        registerRpc(FormControl.class, formControlRpc);
+        registerRpc(FormRpc.class, formRpc);
     }
 
     @Override
     public void onUnregister() {
-        unregisterRpc(FormControl.class, formControlRpc);
+        unregisterRpc(FormRpc.class, formRpc);
         super.onUnregister();
     }
 

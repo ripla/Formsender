@@ -14,11 +14,11 @@ subprojects {
 
 	apply plugin: "com.devsoap.plugin.vaadin"
 
-	vaadin.version="8.3.1"
+	vaadin.version="8.5.2"
 
 	vaadinCompile.draftCompile = true
 	vaadinCompile.strict = true
-	vaadinCompile.manageWidgetset = false
+	vaadinCompile.manageWidgetset = true
 	vaadin.logToConsole = true
 
 	vaadinAddon.author = "Risto Yrjänä / Vaadin, Federico Russo"
@@ -28,7 +28,7 @@ subprojects {
 	sourceCompatibility = "1.8"
 	targetCompatibility = "1.8"
 
-	group = "org.vaadin.risto.${baseNameLower}"
+	group = "org.vaadin.risto"
 
 	//creates archives named "name-version.jar" and "name.war" where name is the name of the main project
 	archivesBaseName = baseNameLower
@@ -38,8 +38,8 @@ subprojects {
 project(":addon") {
 	eclipse.project.name = "${baseNameUpper}-addon"
 
-	version = "3.0.0"
-	//vaadin.widgetset = "${group}.Widgetset"
+	version = "3.0.4"
+	vaadinCompile.widgetset = "org.vaadin.risto.formsender.Widgetset"
 
 	dependencies {
 		compile "org.eclipse.jetty:jetty-jsp:9.3.0.M1"

@@ -9,3 +9,5 @@ target
 .gradletasknamecache
 classes
 out
+.idea/
+
